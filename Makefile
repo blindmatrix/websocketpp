@@ -114,7 +114,7 @@ endif
         uninstall_headers
 
 # Targets
-all: $(lib_target)
+all: banner $(lib_target)
 	@echo "============================================================"
 	@echo "Done"
 	@echo "============================================================"
@@ -149,22 +149,22 @@ $(lib_target): banner installdirs $(addprefix $(objdir)/, $(objects))
 endif
 
 # Compile object files
-$(objdir)/sha1.o: $(srcdir)/sha1/sha1.cpp
+$(objdir)/sha1.o: $(srcdir)/sha1/sha1.cpp banner
 	$(CXX) $< -o $@ $(CXXFLAGS)
 	
-$(objdir)/base64.o: $(srcdir)/base64/base64.cpp
+$(objdir)/base64.o: $(srcdir)/base64/base64.cpp banner
 	$(CXX) $< -o $@ $(CXXFLAGS)
 
-$(objdir)/hybi_header.o: $(srcdir)/processors/hybi_header.cpp
+$(objdir)/hybi_header.o: $(srcdir)/processors/hybi_header.cpp banner
 	$(CXX) $< -o $@ $(CXXFLAGS)
 
-$(objdir)/data.o: $(srcdir)/messages/data.cpp
+$(objdir)/data.o: $(srcdir)/messages/data.cpp banner
 	$(CXX) $< -o $@ $(CXXFLAGS)
 
-$(objdir)/md5.o: $(srcdir)/md5/md5.c
+$(objdir)/md5.o: $(srcdir)/md5/md5.c banner
 	$(CXX) $< -o $@ $(CXXFLAGS)
 
-$(objdir)/%.o: $(srcdir)/%.cpp
+$(objdir)/%.o: $(srcdir)/%.cpp banner
 	$(CXX) $< -o $@ $(CXXFLAGS)
 
 ifeq ($(SHARED),1)
