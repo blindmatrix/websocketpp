@@ -149,22 +149,22 @@ $(lib_target): banner installdirs $(addprefix $(objdir)/, $(objects))
 endif
 
 # Compile object files
-$(objdir)/sha1.o: $(srcdir)/sha1/sha1.cpp banner
+$(objdir)/sha1.o: $(srcdir)/sha1/sha1.cpp banner installdirs
 	$(CXX) $< -o $@ $(CXXFLAGS)
 	
-$(objdir)/base64.o: $(srcdir)/base64/base64.cpp banner
+$(objdir)/base64.o: $(srcdir)/base64/base64.cpp banner installdirs
 	$(CXX) $< -o $@ $(CXXFLAGS)
 
-$(objdir)/hybi_header.o: $(srcdir)/processors/hybi_header.cpp banner
+$(objdir)/hybi_header.o: $(srcdir)/processors/hybi_header.cpp banner installdirs
 	$(CXX) $< -o $@ $(CXXFLAGS)
 
-$(objdir)/data.o: $(srcdir)/messages/data.cpp banner
+$(objdir)/data.o: $(srcdir)/messages/data.cpp banner installdirs
 	$(CXX) $< -o $@ $(CXXFLAGS)
 
-$(objdir)/md5.o: $(srcdir)/md5/md5.c banner
+$(objdir)/md5.o: $(srcdir)/md5/md5.c banner installdirs
 	$(CXX) $< -o $@ $(CXXFLAGS)
 
-$(objdir)/%.o: $(srcdir)/%.cpp banner
+$(objdir)/%.o: $(srcdir)/%.cpp banner installdirs
 	$(CXX) $< -o $@ $(CXXFLAGS)
 
 ifeq ($(SHARED),1)
